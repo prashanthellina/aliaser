@@ -1,0 +1,27 @@
+#!/bin/sh
+
+# Make sure only root can run this script
+if [ `id | cut -d= -f3 | cut -d\( -f1` = 0 ]    
+ then   
+    echo "installing ..."
+ else   
+  echo "This script must be run as root" 1>&2
+  exit 0;
+fi
+
+chmod a+x aliaser.py
+cp -f aliaser.py /usr/bin/aliaser
+
+echo "basic installation done."
+
+echo "Please follow these steps carefully to complete installation."
+echo
+echo "run the following command"
+echo "mkdir ~/.aliaser; touch ~/.aliaser/aliases.sh"
+echo
+echo "add the following commands to your .bashrc ."
+echo
+echo "source ~/.aliaser/aliases.sh"
+echo "/usr/bin/aliaser"
+echo "/usr/bin/aliaser show-tips"
+
